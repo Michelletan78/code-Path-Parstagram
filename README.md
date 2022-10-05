@@ -28,8 +28,9 @@ Here's a walkthrough of implemented user stories:
 <img src="https://media.giphy.com/media/yOHBtg0nI8PrcUXLyp/giphy.gif" alt="video of login">
 ## take photo save git
 
-<img src="https://media.giphy.com/media/HrEs9YX7sFDI0OQ72G/giphy.gif  " title='Video Walkthrough' width='' alt='Video Walkthrough' />
-## pull down and refresh , post unlimited posts
+<img src="https://media.giphy.com/media/HrEs9YX7sFDI0OQ72G/giphy.gif" title='Video Walkthrough' width='' alt='Video Walkthrough' />
+##  User can pull down and refresh
 
 <img src="https://media.giphy.com/media/dYzpU58p1LV5BMysVm/giphy.gif" alt="video qury more than 20 post">
-
+## User can load past posts infinitely
+<img src="https://media.giphy.com/media/A3XzacASvwhsdan1Hn/giphy.gif" alt="video qury more than 20 post">
