@@ -3,6 +3,7 @@
 //  Parstagram
 //
 //  Created by Michelle Tan on 9/24/22.
+<<<<<<< HEAD
 import UIKit
 import Parse
 import AlamofireImage
@@ -18,6 +19,20 @@ class FeedViewController: UIViewController, UITableViewDelegate,
     var showCommentBar = false
     var posts = [PFObject]()
     var selectedPost: PFObject!
+=======
+//
+
+import UIKit
+import Parse
+import AlamofireImage
+
+class FeedViewController: UIViewController, UITableViewDelegate,
+    UITableViewDataSource{
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var posts = [PFObject]()
+>>>>>>> main
     
     var refreshControl = UIRefreshControl()
     var numberOfPost: Int!
@@ -25,6 +40,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+<<<<<<< HEAD
         commentBar.inputTextView.placeholder = "Add a comment ..."
         commentBar.sendButton.title = "Post"
         commentBar.delegate = self
@@ -56,6 +72,15 @@ class FeedViewController: UIViewController, UITableViewDelegate,
         
         return showCommentBar
         
+=======
+        tableView.delegate = self
+        tableView.dataSource = self
+      
+        refreshControl.addTarget(self, action: #selector(onRefresh), for: UIControl.Event.valueChanged)
+        tableView.addSubview(refreshControl)
+
+        // Do any additional setup after loading the view.
+>>>>>>> main
     }
     @objc  func onRefresh(send: UIRefreshControl){
         
@@ -64,11 +89,20 @@ class FeedViewController: UIViewController, UITableViewDelegate,
             self.refreshControl.endRefreshing()
         }
     }
+<<<<<<< HEAD
+=======
+    
+    
+>>>>>>> main
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         numberOfPost = 20
         let query = PFQuery(className: "Posts")
+<<<<<<< HEAD
         query.includeKeys(["author","comments", "comments.author"])
+=======
+        query.includeKey("author")
+>>>>>>> main
         query.limit = numberOfPost + 20
         
         query.findObjectsInBackground {(posts, error) in
@@ -81,6 +115,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,
         
     }
     
+<<<<<<< HEAD
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
         //Create the comment
         
@@ -175,6 +210,36 @@ class FeedViewController: UIViewController, UITableViewDelegate,
         }
     }
         
+=======
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
+        let post = posts[indexPath.row]
+        
+        let user = post["author"] as! PFUser
+        
+        cell.usernameLabel.text = user.username
+        
+        cell.captionLabel.text = post["caption"] as? String
+        
+        let imageFile = post ["image"] as! PFFileObject
+        let urlString = imageFile.url!
+        let url = URL(string: urlString)!
+        
+        cell.photoView.af_setImage(withURL: url)
+        
+        
+        return cell
+        
+    }
+    
+
+>>>>>>> main
     /*
     // MARK: - Navigation
 
@@ -184,6 +249,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,
         // Pass the selected object to the new view controller.
     }
     */
+<<<<<<< HEAD
     
     
     @IBAction func onLogoutButton(_ sender: Any) {
@@ -199,4 +265,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,
         delegate.window?.rootViewController = loginViewController
     }
     
+=======
+
+>>>>>>> main
 }
